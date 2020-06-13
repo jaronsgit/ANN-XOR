@@ -18,6 +18,7 @@ namespace CHNJAR003
         std::vector<float> output(const std::vector<float> &inputVector);
         float hiddenOutput(const int layer, const int nodeNum, const std::vector<float> &inputVector);
         float meanSquaredError(const std::vector<float> &output);
+        void feedForward(const std::vector<float> &inputVector);
     };
 
 } // namespace CHNJAR003
