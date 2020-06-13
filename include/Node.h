@@ -15,6 +15,7 @@ namespace CHNJAR003
     private:
         int numberOfInputs;
         std::vector<float> weights; //W0 is interpreted as the bias
+        float outputPrediction;
 
     public:
         Node(const int numInputs, const std::vector<float> &weights);
