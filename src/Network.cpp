@@ -44,4 +44,9 @@ namespace CHNJAR003
         }
     }
 
+    float Network::hiddenOutput(const int layer, const int nodeNum, const std::vector<float> &inputVector)
+    {
+        return layers[layer][nodeNum].output(inputVector);
+    }
+
 } // namespace CHNJAR003
