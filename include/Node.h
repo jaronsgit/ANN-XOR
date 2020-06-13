@@ -21,6 +21,7 @@ namespace CHNJAR003
         Node(const int numInputs, const std::vector<float> &weights);
         float sigmoid(float num);
         void setOutputPrediction(float num);
+        float getOutputPrediction(void);
         float output(const std::vector<float> &inputConnections);
     };
 

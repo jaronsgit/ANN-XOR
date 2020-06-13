@@ -27,4 +27,9 @@ namespace CHNJAR003
         outputPrediction = num;
     }
 
+    float Node::getOutputPrediction(void)
+    {
+        return outputPrediction;
+    }
+
 } // namespace CHNJAR003
