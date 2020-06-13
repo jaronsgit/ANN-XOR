@@ -14,11 +14,11 @@ namespace CHNJAR003
     {
     private:
         int numberOfInputs;
-        std::vector<float> weights;
-        /* data */
+        std::vector<float> weights; //W0 is interpreted as the bias
+
     public:
-        Node(/* args */);
-        ~Node();
+        Node(const int numInputs, const std::vector<float> &weights);
+        float output(const std::vector<float> &inputConnections);
     };
 
 } // namespace CHNJAR003
