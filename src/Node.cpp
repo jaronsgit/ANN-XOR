@@ -3,6 +3,7 @@
 #include <utility>
 #include <algorithm>
 #include <numeric>
+#include <cmath>
 
 namespace CHNJAR003
 {
@@ -14,6 +15,11 @@ namespace CHNJAR003
     {
         outputPrediction = std::inner_product(weights.begin() + 1, weights.end(), inputConnections.begin(), weights[0]);
         return outputPrediction;
+    }
+
+    float Node::sigmoid(float num)
+    {
+        return 1 / (1 + std::pow(std::exp(1.0), -num));
     }
 
 } // namespace CHNJAR003
