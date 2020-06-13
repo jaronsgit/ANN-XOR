@@ -2,11 +2,7 @@
 #define Network_H
 
 #include <vector>
-#include <utility>
-#include <string>
-#include <iostream>
-#include <fstream>
-#include <sstream>
+
 #include "../include/Node.h"
 
 namespace CHNJAR003
@@ -15,7 +11,7 @@ namespace CHNJAR003
     {
     private:
         std::vector<int> topology;
-        std::vector<Node> layers;
+        std::vector<std::vector<Node>> layers;
         /* data */
     public:
         Network(const std::vector<int> &topology, const std::vector<std::vector<std::vector<float>>> &nodeWeights);
