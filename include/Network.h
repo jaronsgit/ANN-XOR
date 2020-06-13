@@ -2,7 +2,6 @@
 #define Network_H
 
 #include <vector>
-
 #include "../include/Node.h"
 
 namespace CHNJAR003
