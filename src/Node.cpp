@@ -22,4 +22,9 @@ namespace CHNJAR003
         return 1 / (1 + std::pow(std::exp(1.0), -num));
     }
 
+    void Node::setOutputPrediction(float num)
+    {
+        outputPrediction = num;
+    }
+
 } // namespace CHNJAR003
