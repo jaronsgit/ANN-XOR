@@ -17,9 +17,8 @@ namespace CHNJAR003
         void setNetworkWeights(const std::vector<std::vector<std::vector<float>>> &nodeWeights);
         std::vector<float> output(void) const;
         float hiddenOutput(const int layer, const int nodeNum);
-        float meanSquaredError(const std::vector<float> &output);
+        float meanSquaredError(const std::vector<float> &targetOutput);
         void feedForward(const std::vector<float> &inputVector);
-
         friend std::ostream &operator<<(std::ostream &os, const Network &n); //Overloaded output stream operator
     };
 

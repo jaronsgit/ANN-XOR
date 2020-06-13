@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <numeric>
 #include <stdexcept>
+#include <cmath>
 
 namespace CHNJAR003
 {
@@ -99,6 +100,26 @@ namespace CHNJAR003
         }
 
         return outResult;
+    }
+
+    float Network::meanSquaredError(const std::vector<float> &targetOutput)
+    {
+        //Get actual output vector
+        std::vector<float> actualOutput;
+
+        for (const auto &node : layers[layers.size() - 1])
+        {
+            actualOutput.push_back(node.getOutputPrediction());
+        }
+
+        //Calculate the MSE - assuming they are the same size currently
+        float totSquaredError = 0.0;
+        for (int i = 0; i < targetOutput.size(); i++)
+        {
+            totSquaredError += std::pow(targetOutput[i] - actualOutput[i], 2);
+        }
+
+        return totSquaredError / targetOutput.size();
     }
 
     std::ostream &operator<<(std::ostream &os, const Network &n)
