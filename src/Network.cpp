@@ -13,16 +13,20 @@ namespace CHNJAR003
         //Check that topology matches node weights
         try
         {
-            if (topology.size() != nodeWeights.size())
+            //remember that the first layer of the topology is the set of input nodes
+            if (topology.size() != nodeWeights.size() - 1)
                 throw std::logic_error("Topology does not match node weights given.");
 
-            for (int i = 0; i < topology.size(); i++)
+            for (int i = 1; i < topology.size(); i++)
             {
-                if (topology[i] != nodeWeights[i].size())
+                if (topology[i] != nodeWeights[i - 1].size())
                     throw std::logic_error("Topology does not match node weights given.");
             }
 
             //Topology is correct -> construct the network with the given topology and weights
+            //Push back the input nodes first
+            layers.push_back(std::vector<Node>(topology[0]));
+
             for (int i = 0; i < nodeWeights.size(); i++) //for each layer
             {
 
