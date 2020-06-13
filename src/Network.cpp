@@ -10,6 +10,7 @@ namespace CHNJAR003
 
     Network::Network(const std::vector<int> &topology, const std::vector<std::vector<std::vector<float>>> &nodeWeights) : topology(topology)
     {
+
         //Check that topology matches node weights
         try
         {
