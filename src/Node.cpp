@@ -14,5 +14,4 @@ namespace CHNJAR003
     {
         return std::inner_product(weights.begin() + 1, weights.end(), inputConnections.begin(), weights[0]);
     }
-
 } // namespace CHNJAR003
