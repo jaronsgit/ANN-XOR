@@ -17,7 +17,7 @@ namespace CHNJAR003
         return outputPrediction;
     }
 
-    float Node::sigmoid(float num)
+    float Node::sigmoid(float num) const
     {
         return 1 / (1 + std::pow(std::exp(1.0), -num));
     }
@@ -27,7 +27,7 @@ namespace CHNJAR003
         outputPrediction = num;
     }
 
-    float Node::getOutputPrediction(void)
+    float Node::getOutputPrediction(void) const
     {
         return outputPrediction;
     }
