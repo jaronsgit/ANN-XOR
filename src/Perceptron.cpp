@@ -25,6 +25,39 @@ namespace CHNJAR003
         return summation > 0 ? 1 : 0;
     }
 
+    void Perceptron::learn(std::vector<std::pair<std::vector<float>, int>> trainingSet)
+    {
+        for (int iteration = 0; iteration < epochThreshold; ++iteration)
+        {
+            for (const auto &trainingExample : trainingSet)
+            {
+                int prediction = predict(trainingExample.first);
+
+                weights[0] += learningRate * (trainingExample.second - prediction);
+
+                auto l = learningRate;
+
+                std::transform(weights.begin() + 1, weights.end(), trainingExample.first.begin(), weights.begin() + 1, [&](float weight, float x) -> float {
+                    return weight + l * (trainingExample.second - prediction) * x;
+                });
+
+                /*for (int i = 1; i < weights.size(); ++i)
+                {
+                    weights[i] += learningRate * (trainingExample.second - prediction) * trainingExample.first[i - 1];
+                }*/
+
+                //Print out the weights for testing
+                /*std::cout << "[";
+                std::cout << weights[0];
+                for (int i = 1; i < weights.size(); ++i)
+                {
+                    std::cout << ", " << weights[i];
+                }
+                std::cout << "]\n";*/
+            }
+        }
+    }
+
     std::ostream &operator<<(std::ostream &os, const Perceptron &p)
     {
         os << "Perceptron internals:\n";
