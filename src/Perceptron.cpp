@@ -25,4 +25,19 @@ namespace CHNJAR003
         return summation > 0 ? 1 : 0;
     }
 
+    std::ostream &operator<<(std::ostream &os, const Perceptron &p)
+    {
+        os << "Perceptron internals:\n";
+        os << "numberOfInputs:\t" << p.numberOfInputs << std::endl;
+        os << "learningRate:\t" << p.learningRate << std::endl;
+        os << "epochThreshold:\t" << p.epochThreshold << std::endl;
+        os << "weights:\n";
+        for (auto weight : p.weights)
+        {
+            os << weight << std::endl;
+        }
+
+        return os;
+    }
+
 } // namespace CHNJAR003
