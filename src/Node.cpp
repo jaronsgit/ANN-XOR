@@ -11,10 +11,9 @@ namespace CHNJAR003
     {
     }
 
-    float Node::output(const std::vector<float> &inputConnections)
+    void Node::feedForward(const std::vector<float> &inputConnections)
     {
         outputPrediction = sigmoid(std::inner_product(weights.begin() + 1, weights.end(), inputConnections.begin(), weights[0]));
-        return outputPrediction;
     }
 
     float Node::sigmoid(float num) const

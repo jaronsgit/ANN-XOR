@@ -22,7 +22,7 @@ namespace CHNJAR003
         float sigmoid(float num) const;
         void setOutputPrediction(float num);
         float getOutputPrediction(void) const;
-        float output(const std::vector<float> &inputConnections);
+        void feedForward(const std::vector<float> &inputConnections);
     };
 
 } // namespace CHNJAR003
