@@ -31,4 +31,16 @@ namespace CHNJAR003
         return outputPrediction;
     }
 
+    std::ostream &operator<<(std::ostream &os, const Node &n)
+    {
+        for (auto weight : n.weights)
+        {
+            os << " " << weight;
+        }
+
+        os << std::endl;
+
+        return os;
+    }
+
 } // namespace CHNJAR003

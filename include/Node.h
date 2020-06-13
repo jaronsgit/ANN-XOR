@@ -23,6 +23,7 @@ namespace CHNJAR003
         void setOutputPrediction(float num);
         float getOutputPrediction(void) const;
         void feedForward(const std::vector<float> &inputConnections);
+        friend std::ostream &operator<<(std::ostream &os, const Node &n); //Overloaded output stream operator
     };
 
 } // namespace CHNJAR003
