@@ -85,6 +85,14 @@ int main(int argc, char *argv[])
     std::cout << "{1, 1} -> " << NANDgate.predict({1, 1}) << std::endl;
     std::cout << "________________\n";
 
+    //Replicate XOR behaviour
+    CHNJAR003::XOR XORgate(ANDgate, ORgate, NANDgate);
+    std::cout << "XOR predictions:" << std::endl;
+    std::cout << "{0, 0} -> " << XORgate.predict({0, 0}) << std::endl;
+    std::cout << "{0, 1} -> " << XORgate.predict({0, 1}) << std::endl;
+    std::cout << "{1, 0} -> " << XORgate.predict({1, 0}) << std::endl;
+    std::cout << "{1, 1} -> " << XORgate.predict({1, 1}) << std::endl;
+
     std::cout << ANDgate;
     std::cout << ORgate;
     std::cout << NANDgate;
