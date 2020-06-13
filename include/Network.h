@@ -16,7 +16,7 @@ namespace CHNJAR003
         Network(const std::vector<int> &topology, const std::vector<std::vector<std::vector<float>>> &nodeWeights);
         void setNetworkWeights(const std::vector<std::vector<std::vector<float>>> &nodeWeights);
         std::vector<float> output(const std::vector<float> &inputVector);
-        float hiddenOutput(const int layer, const int nodeNum, const std::vector<float> &inputVector);
+        float hiddenOutput(const int layer, const int nodeNum);
         float meanSquaredError(const std::vector<float> &output);
         void feedForward(const std::vector<float> &inputVector);
     };

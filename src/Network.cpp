@@ -44,9 +44,37 @@ namespace CHNJAR003
         }
     }
 
-    float Network::hiddenOutput(const int layer, const int nodeNum, const std::vector<float> &inputVector)
+    float Network::hiddenOutput(const int layer, const int nodeNum)
     {
-        return layers[layer][nodeNum].output(inputVector);
+        return layers[layer][nodeNum].getOutputPrediction();
+    }
+
+    void Network::feedForward(const std::vector<float> &inputVector)
+    {
+        //Set the input layer neuron's outputs
+        for (int i = 0; i < layers[0].size(); ++i)
+        {
+            layers[0][i].setOutputPrediction(inputVector[i]);
+        }
+
+        //Propagate the outputs forward
+        for (int i = 1; i < layers.size(); ++i)
+        {
+            //get previous layer outputs
+            std::vector<float> prevOutputs;
+            for (const auto &node : layers[i - 1])
+            {
+                prevOutputs.push_back(node.getOutputPrediction());
+            }
+
+            auto &layer = layers[i];
+
+            //Feed forward
+            for (int j = 0; j < layer.size(); ++j)
+            {
+                layer[j].feedForward(prevOutputs);
+            }
+        }
     }
 
 } // namespace CHNJAR003
