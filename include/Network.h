@@ -15,10 +15,12 @@ namespace CHNJAR003
     public:
         Network(const std::vector<int> &topology, const std::vector<std::vector<std::vector<float>>> &nodeWeights);
         void setNetworkWeights(const std::vector<std::vector<std::vector<float>>> &nodeWeights);
-        std::vector<float> output(const std::vector<float> &inputVector);
+        std::vector<float> output(void) const;
         float hiddenOutput(const int layer, const int nodeNum);
         float meanSquaredError(const std::vector<float> &output);
         void feedForward(const std::vector<float> &inputVector);
+
+        friend std::ostream &operator<<(std::ostream &os, const Network &n); //Overloaded output stream operator
     };
 
 } // namespace CHNJAR003

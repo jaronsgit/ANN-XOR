@@ -89,6 +89,18 @@ namespace CHNJAR003
         }
     }
 
+    std::vector<float> Network::output(void) const
+    {
+        std::vector<float> outResult;
+
+        for (const auto &node : layers[layers.size() - 1])
+        {
+            outResult.push_back(node.getOutputPrediction());
+        }
+
+        return outResult;
+    }
+
     std::ostream &operator<<(std::ostream &os, const Network &n)
     {
         os << "Network internals:\n";
