@@ -15,9 +15,14 @@ namespace CHNJAR003
     {
     private:
         std::vector<int> topology;
+        std::vector<Node> layers;
         /* data */
     public:
-        Network(/* args */);
+        Network(const std::vector<int> &topology, const std::vector<std::vector<std::vector<float>>> &nodeWeights);
+        void setNetworkWeights(const std::vector<std::vector<std::vector<float>>> &nodeWeights);
+        std::vector<float> output(const std::vector<float> &inputVector);
+        float hiddenOutput(const int layer, const int nodeNum, const std::vector<float> &inputVector);
+        float meanSquaredError(const std::vector<float> &output);
     };
 
 } // namespace CHNJAR003
