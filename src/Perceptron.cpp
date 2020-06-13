@@ -13,4 +13,16 @@ namespace CHNJAR003
         weights[0] = bias;
     }
 
+    int Perceptron::predict(const std::vector<float> &inputVector)
+    {
+
+        float summation = std::inner_product(weights.begin() + 1, weights.end(), inputVector.begin(), weights[0]);
+        /*float summation = weights[0];
+        for (int i = 1; i < weights.size(); ++i)
+        {
+            summation += weights[i] * inputVector[i - 1];
+        }*/
+        return summation > 0 ? 1 : 0;
+    }
+
 } // namespace CHNJAR003

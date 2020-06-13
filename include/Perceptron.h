@@ -24,7 +24,8 @@ namespace CHNJAR003
         Perceptron(const int numberOfInputs, const float learningRate, const float bias, const int epochThreshold);
         int predict(const std::vector<float> &inputVector);                      //Perceptron output function -> outputs either a 1 or a zero
         void learn(std::vector<std::pair<std::vector<float>, int>> trainingSet); //Training set is a vector of pairs: first is the input vector, second is the desired ouput
-        friend std::ostream &operator<<(std::ostream &os, const Perceptron &p);  //Overloaded output stream operator
+
+        friend std::ostream &operator<<(std::ostream &os, const Perceptron &p); //Overloaded output stream operator
     };
 
 } // namespace CHNJAR003
