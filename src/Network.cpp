@@ -57,7 +57,7 @@ namespace CHNJAR003
         }
     }
 
-    float Network::hiddenOutput(const int layer, const int nodeNum)
+    float Network::hiddenOutput(const int layer, const int nodeNum) const
     {
         return layers[layer][nodeNum].getOutputPrediction();
     }
@@ -102,7 +102,7 @@ namespace CHNJAR003
         return outResult;
     }
 
-    float Network::meanSquaredError(const std::vector<float> &targetOutput)
+    float Network::meanSquaredError(const std::vector<float> &targetOutput) const
     {
         //Get actual output vector
         std::vector<float> actualOutput;
