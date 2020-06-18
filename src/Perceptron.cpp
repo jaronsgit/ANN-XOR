@@ -13,18 +13,16 @@ namespace CHNJAR003
         weights[0] = bias;
     }
 
+    //Perceptron output function -> outputs either a 1 or a zero
     int Perceptron::predict(const std::vector<float> &inputVector)
     {
 
         float summation = std::inner_product(weights.begin() + 1, weights.end(), inputVector.begin(), weights[0]);
-        /*float summation = weights[0];
-        for (int i = 1; i < weights.size(); ++i)
-        {
-            summation += weights[i] * inputVector[i - 1];
-        }*/
         return summation > 0 ? 1 : 0;
     }
 
+    //Train the perceptron with a given training set.
+    //Training set is a vector of pairs: first is the input vector, second is the desired ouput
     void Perceptron::learn(std::vector<std::pair<std::vector<float>, int>> trainingSet)
     {
         for (int iteration = 0; iteration < epochThreshold; ++iteration)
@@ -40,20 +38,6 @@ namespace CHNJAR003
                 std::transform(weights.begin() + 1, weights.end(), trainingExample.first.begin(), weights.begin() + 1, [&](float weight, float x) -> float {
                     return weight + l * (trainingExample.second - prediction) * x;
                 });
-
-                /*for (int i = 1; i < weights.size(); ++i)
-                {
-                    weights[i] += learningRate * (trainingExample.second - prediction) * trainingExample.first[i - 1];
-                }*/
-
-                //Print out the weights for testing
-                /*std::cout << "[";
-                std::cout << weights[0];
-                for (int i = 1; i < weights.size(); ++i)
-                {
-                    std::cout << ", " << weights[i];
-                }
-                std::cout << "]\n";*/
             }
         }
     }
