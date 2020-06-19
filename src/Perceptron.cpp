@@ -11,6 +11,7 @@ namespace CHNJAR003
     {
         weights = std::vector<float>(numberOfInputs + 1, 0.0);
         weights[0] = bias;
+        numEpochs = 0;
     }
 
     //Perceptron output function -> outputs either a 1 or a zero
@@ -27,6 +28,7 @@ namespace CHNJAR003
     {
         for (int iteration = 0; iteration < epochThreshold; ++iteration)
         {
+            bool errors = false;
             for (const auto &trainingExample : trainingSet)
             {
                 int prediction = predict(trainingExample.first);
@@ -38,8 +40,23 @@ namespace CHNJAR003
                 std::transform(weights.begin() + 1, weights.end(), trainingExample.first.begin(), weights.begin() + 1, [&](float weight, float x) -> float {
                     return weight + l * (trainingExample.second - prediction) * x;
                 });
+
+                if (prediction != trainingExample.second)
+                {
+                    errors = true;
+                }
+            }
+            if (!errors)
+            {
+                numEpochs = iteration + 1;
+                break;
             }
         }
+    }
+
+    int Perceptron::getNumEpochs(void)
+    {
+        return numEpochs;
     }
 
     std::ostream &operator<<(std::ostream &os, const Perceptron &p)

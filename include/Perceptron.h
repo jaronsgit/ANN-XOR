@@ -20,11 +20,14 @@ namespace CHNJAR003
         float epochThreshold;       //Number of allowable epochs
         std::vector<float> weights; //W0 will effectively be used as a bias
 
+        int numEpochs; //record the number of epochs required to train completely
+
     public:
         Perceptron(const int numberOfInputs, const float learningRate, const float bias, const int epochThreshold); //Perceptron parameterised constructor
         int predict(const std::vector<float> &inputVector);                                                         //Perceptron output function -> outputs either a 1 or a zero
         void learn(std::vector<std::pair<std::vector<float>, int>> trainingSet);                                    //Training set is a vector of pairs: first is the input vector, second is the desired ouput
-        friend std::ostream &operator<<(std::ostream &os, const Perceptron &p);                                     //Overloaded output stream operator
+        int getNumEpochs(void);
+        friend std::ostream &operator<<(std::ostream &os, const Perceptron &p); //Overloaded output stream operator
     };
 
 } // namespace CHNJAR003
